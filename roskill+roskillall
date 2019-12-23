@@ -1,1 +1,10 @@
+1 查看ROSnode的进程号：ps -ef | grep ros, 得到进程号：
+  用户名 21369 56123  4 15:48 pts/18   00:00:00 /usr/bin/python /opt/ros/kinetic/bin/roslaunch my_service my.launch
+  21369即是我们要找的进程号
+  
+2 杀死该进程: sudo kill -2 21369
+  使用-2命令杀死进程相当于键盘打断ctrl+c，可以通过signal的SIGINT捕捉到，从而进行获得进程终止信号后的一系列操作。-9是不可被捕获的信号.  
+  
+3 ros 杀掉所有节点: rosnode kill -a 或者 rosnode kill --all
+4 删除roscore进程: killall -9 roscore killall -9 rosmaster
 
