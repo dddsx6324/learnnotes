@@ -1,0 +1,78 @@
+A.修改文档名称 
+  点File，再点rename
+
+B.导出文档 
+  点File，再点Download as,发现里面支持好几种格式的导出，第一个ipynb是notebook的格式，是一种类json的格式保存，其他的建议你们都试一试，你会感到非常惊喜的。
+
+C.保存 
+  Ctrl + S 快捷键的可以保存你的文档的，默认是保存为ipynb，保存在你的主目录下！
+
+D.单元格格式 注意到快捷键栏中有一个code的下拉框，点开发现有几个选项：
+    Code格式就是正常的python代码格式
+    Markdown的一个text文档编辑格式，就像在word里编写一样
+    Heading就是给Markdown的句子设置标题等级，像word的标题一，标题二...
+    Raw NBConvert 没用过不了解，可以自行百度或者看官网介绍
+    改变单元格类型时弹出消息中有解释，后面那个单元格以 # 标记开头，意味着这是一个一级标题。如果需要子标题，可以使用以下标记表示：# : 一级标题## : 二级标题### : 三级标题...
+
+E.快捷键 常用的快捷键是：
+    Ctrl + Enter: 执行单元格代码
+    Shift + Enter: 执行单元格代码并且移动到下一个单元格
+    Alt + Enter: 执行单元格代码，新建并移动到下一个单元格
+
+F.历史输入和输出变量
+  与标准 Shell 类似，IPython 中也可以通过 _ 和 _ _ 访问上一次和上上一次的输出。
+  当你写的单元格多了，肯定会注意到，IPython 中每一次的输入输出都有序号。你可以通过一下方法访问这些输入和输出：
+    _：访问上一次输出
+    __：访问上上一次输出
+    _X：访问历史 X 行输出
+    _iX：访问历史 X 行输入,其中小写字母 “i”，代表 “in”。
+  
+/**************************************************************************************************************************/  
+/**************************************************************************************************************************/ 
+/**************************************************************************************************************************/ 
+
+A.魔术命令
+  在 IPython 的会话环境中，所有文件都可以通过 %run 命令来当做脚本执行，并且文件中的变量也会随即导入当前命名空间。即对于一个模块文件，你对他使用 %run 命令的效果和 from module import * 相同,这种以 % 开头的命令在 IPython 中被称为魔术命令，用于加强 shell 的功能。
+  常用的魔术命令有： 
+  %quickref 	显示 IPython 快速参考
+  %magic 	显示所有魔术命令的详细文档
+  %debug 	从最新的异常跟踪的底部进入交互式调试器
+  %pdb 	在异常发生后自动进入调试器
+  %reset 	删除 interactive 命名空间中的全部变量
+  %run script.py 	执行 script.py
+  %prun statement 	通过 cProfile 执行对 statement 的逐行性能分析
+  %time statement 	测试 statement 的执行时间
+  %timeit statement 	多次测试 statement 的执行时间并计算平均值
+  %who、%who_ls、%whos 	显示 interactive 命名空间中定义的变量，信息级别/冗余度可变
+  %xdel variable 	删除 variable，并尝试清除其在 IPython 中的对象上的一切引用
+  !cmd 	在系统 shell 执行 cmd
+  output=!cmd args 	执行cmd 并赋值
+  %bookmark 	使用 IPython 的目录书签系统
+  %cd direcrory 	切换工作目录
+  %pwd 	返回当前工作目录（字符串形式）
+  %env 	返回当前系统变量（以字典形式）
+
+  对魔术命令不熟悉的话可以通过 %magic 查看详细文档；对某一个命令不熟悉的话，可以通过 %cmd? 内省机制查看特定文档
+
+B.添加插件
+  1）侧边栏目录导航
+  当文章内容非常长的时候，前后找内容，很麻烦，不如加一个sidebar，方便导航方法：https://github.com/ipython-contrib/IPython-notebook-extensions/tree/master/nbextensions/usability/toc2
+  2）隐藏代码按钮
+  有时候，希望代码可以隐藏，这样子文档看起来，就会干净一些 
+  点击按钮，就可以隐藏所有的代码，具体做法：http://stackoverflow.com/questions/27934885/how-to-hide-code-from-cells-in-ipython-notebook-visualized-with-nbviewer当然，还有更多的extention可见https://github.com/ipython-contrib/IPython-notebook-extensions/
+  参考【https://www.douban.com/review/7890354/】
+
+C.运行python文件
+  利用jupyter的cell是可以运行python文件的。
+  方法一：
+      %run file.py  
+  方法二：在unitx command前面加入一个感叹号“！” ，如：
+      !python myfile.py  
+
+D.导入外部代码
+  比如有一个test.py文件，需要将其载入到jupyter的一个cell中
+  在需要导入该段代码的cell中输入
+      %load test.py #test.py是当前路径下的一个python文件  
+  shift + enter运行后，%load test.py被自动加入了注释符号#，test.py中的所有代码都被load到了当前的cell中
+  或者从从网络load代码到jupyter
+  在cell中输入%load http://.....，然后运行该cell，就会将load后面所对应地址的代码load到当前的cell中； 
